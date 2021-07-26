@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+@model List<Movie>
+
+<h1>Movies</h1>
+<p><a href="../movie/MovieForm">Add New Movie</a></p>
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>Title</th>
+        <th>Genre</th>
+        <th>Runtime</th>
+    </tr>
+    @foreach(var movie in Model)
+            {
+                <tr>
+                    <td>@movie.title</td>
+                    <td>@movie.genre</td>
+                    <td>@movie.runtime</td>
+                    <td><a href="../movie/editmovie?id=@movie.id" class="btn btn-info">Edit</a></td>
+                    <td><a href="../movie/deletemovie?id=@movie.id" class="btn btn-info">Delete</a></td>
+                </tr>
+            }
+
+
+</table>

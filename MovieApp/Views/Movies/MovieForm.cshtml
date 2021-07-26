@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Movie Form";
+}
+
+@model Movie
+<h1>Movie Form</h1>
+
+@if (Model.id == 0)
+{
+<form asp-action="AddMovie" method="post">
+    <label asp-for="title"></label>
+    <input type="text" asp-for="title" value="@Model.title" />
+    <br />
+    <label asp-for="genre"></label>
+    <select name="Genre" asp-for="genre">
+        <option value="">-Select a Genre-</option>
+        <option value="Action">Action</option>
+        <option value="Adventure">Adventure</option>
+        <option value="Comedy">Comedy</option>
+        <option value="Crime">Crime</option>
+        <option value="Documentary">Documentary</option>
+        <option value="Drama">Drama</option>
+        <option value="Epic">Epic</option>
+        <option value="Fantasy">Fantasy</option>
+        <option value="Horror">Horror</option>
+        <option value="Martial Arts">Martial Arts</option>
+        <option value="Musical">Musical</option>
+        <option value="Sci-Fi">Sci-Fi</option>
+        <option value="Thriller">Drama</option>
+        <option value="Western">Western</option>
+    </select>
+    <br />
+    <label asp-for="runtime"></label>
+    <input type="number" asp-for="runtime" value="@Model.runtime" />
+    <br />
+    @*editing a movie*@
+    @if (Model.id != 0)
+    {
+        <input type="hidden" asp-for="id" value="@Model.id" />
+    }
+    <input type="submit" class="btn btn-light" value="Save Movie" />
+</form>
+}
